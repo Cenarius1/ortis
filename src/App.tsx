@@ -100,6 +100,7 @@ function Section<T extends Product>({ title, items }: { title: string; items: T[
 }
 
 function App() {
+  const twitchParent = typeof window !== 'undefined' ? window.location.hostname : 'localhost'
   return (
     <div className="page">
       <header className="hero">
@@ -207,7 +208,7 @@ function App() {
             <div className="shot-glow"></div>
             <div className="heat-overlay"></div>
             <div className="flames"></div>
-            <img src="/images/main-ortis.jpg" alt="Ortis w trakcie treningu" />
+            <img src="/main-ortis.jpg" alt="Ortis w trakcie treningu" />
             <div className="shot-overlay">Siła // Ortis</div>
           </div>
 
@@ -218,7 +219,7 @@ function App() {
               <h3>Oglądaj Ortisa na żywo</h3>
               <div className="twitch-frame">
                 <iframe
-                  src="https://player.twitch.tv/?channel=ortis&parent=localhost"
+                  src={`https://player.twitch.tv/?channel=ortis&parent=${twitchParent}`}
                   allowFullScreen
                   scrolling="no"
                   frameBorder="0"
