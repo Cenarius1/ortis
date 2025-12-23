@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 
 type Product = {
@@ -101,6 +102,8 @@ function Section<T extends Product>({ title, items }: { title: string; items: T[
 
 function App() {
   const twitchParent = typeof window !== 'undefined' ? window.location.hostname : 'localhost'
+  const [showVideo, setShowVideo] = useState(false)
+
   return (
     <div className="page">
       <header className="hero">
@@ -236,6 +239,25 @@ function App() {
           </div>
         </div>
       </header>
+
+      <button className="video-banner" onClick={() => setShowVideo((v) => !v)}>
+        REAKCJA ORTIS NA STRONĘ 19.12.2025
+      </button>
+
+      {showVideo && (
+        <section className="video-block" id="reakcja">
+          <div className="video-inner">
+            <video
+              controls
+              preload="metadata"
+              poster="/vid/ortis-reaction-poster.jpg"
+              src="/vid/ortis-reaction-720p.mp4"
+            >
+              Twoja przeglądarka nie obsługuje wideo.
+            </video>
+          </div>
+        </section>
+      )}
 
       <Section title="Ubrania" items={clothes} />
       <Section title="Suplementy" items={supplements} />
